@@ -12,3 +12,4 @@ B:\Projects\YellowBelt\Mini_Kata_5\obj\Debug\net8.0\refint\Mini_Kata_5.dll
 B:\Projects\YellowBelt\Mini_Kata_5\obj\Debug\net8.0\Mini_Kata_5.pdb
 B:\Projects\YellowBelt\Mini_Kata_5\obj\Debug\net8.0\Mini_Kata_5.genruntimeconfig.cache
 B:\Projects\YellowBelt\Mini_Kata_5\obj\Debug\net8.0\ref\Mini_Kata_5.dll
+B:\Projects\YellowBelt\Mini_Kata_5\obj\Debug\net8.0\Mini_Kata_5.sourcelink.json
