@@ -1,0 +1,15 @@
+B:\Projects\YellowBelt\Exam_Kata\bin\Debug\net8.0\Exam_Kata.exe
+B:\Projects\YellowBelt\Exam_Kata\bin\Debug\net8.0\Exam_Kata.deps.json
+B:\Projects\YellowBelt\Exam_Kata\bin\Debug\net8.0\Exam_Kata.runtimeconfig.json
+B:\Projects\YellowBelt\Exam_Kata\bin\Debug\net8.0\Exam_Kata.dll
+B:\Projects\YellowBelt\Exam_Kata\bin\Debug\net8.0\Exam_Kata.pdb
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.GeneratedMSBuildEditorConfig.editorconfig
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.AssemblyInfoInputs.cache
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.AssemblyInfo.cs
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.csproj.CoreCompileInputs.cache
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.sourcelink.json
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.dll
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\refint\Exam_Kata.dll
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.pdb
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\Exam_Kata.genruntimeconfig.cache
+B:\Projects\YellowBelt\Exam_Kata\obj\Debug\net8.0\ref\Exam_Kata.dll
