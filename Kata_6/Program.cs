@@ -20,5 +20,6 @@ class Program
         
         Console.WriteLine("\nUpdated Inventory:");
         playerInventory.ForEach(Console.WriteLine);
+        
     }
 }

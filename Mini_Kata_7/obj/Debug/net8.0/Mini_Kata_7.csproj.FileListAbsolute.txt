@@ -1,0 +1,15 @@
+B:\Projects\YellowBelt\Mini_Kata_7\bin\Debug\net8.0\Mini_Kata_7.exe
+B:\Projects\YellowBelt\Mini_Kata_7\bin\Debug\net8.0\Mini_Kata_7.deps.json
+B:\Projects\YellowBelt\Mini_Kata_7\bin\Debug\net8.0\Mini_Kata_7.runtimeconfig.json
+B:\Projects\YellowBelt\Mini_Kata_7\bin\Debug\net8.0\Mini_Kata_7.dll
+B:\Projects\YellowBelt\Mini_Kata_7\bin\Debug\net8.0\Mini_Kata_7.pdb
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.GeneratedMSBuildEditorConfig.editorconfig
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.AssemblyInfoInputs.cache
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.AssemblyInfo.cs
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.csproj.CoreCompileInputs.cache
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.sourcelink.json
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.dll
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\refint\Mini_Kata_7.dll
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.pdb
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\Mini_Kata_7.genruntimeconfig.cache
+B:\Projects\YellowBelt\Mini_Kata_7\obj\Debug\net8.0\ref\Mini_Kata_7.dll
