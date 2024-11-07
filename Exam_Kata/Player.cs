@@ -1,36 +1,24 @@
 namespace Exam_Kata;
 
-public class Player : ICombat
+public class Player : Character, ICombat
 {
-    public string? Name {get;}
-    private int _maxHealth;
-    private int _currentHealth;
-    private int _damage;
-    
-    
+    public string Name {get;}
     private int _level;
-    private int _experience;
-    private int _gold;
     
-    public bool IsAlive = true;
-    private readonly Random _random = new Random();
-    
-    
-    public Player(string? name, int maxHealth, int level, int experience, int gold, int damage)
+    public Player(string name, int maxHealth = 100, int level = 1, int exp = 0, int gold = 0, int damage = 20) : 
+        base(maxHealth, damage, exp, gold)
     {
         Name = name;
-        _maxHealth = maxHealth;
-        _currentHealth = _maxHealth;
         _level = level;
-        _experience = experience;
-        _gold = gold;
-        _damage = damage;
+       
     }
 
     public int DealDamage(string? enemyType)
     {
         int damage = DamageCalculator();
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine($"{Name} attacks {enemyType} for {damage} Damage!");
+        Console.ResetColor();
         return damage;
     }
     public int DamageCalculator()
@@ -45,8 +33,10 @@ public class Player : ICombat
             _currentHealth = 0;
             IsAlive = false;
         }
+        Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine($"Player {Name} takes {damage} Damage!\n" +
-                          $"{Name}'s current health: {_currentHealth}\n");
+                          $"\n{Name}'s current health: {_currentHealth}\n");
+        Console.ResetColor();
     }
     public void Heal()
     {
@@ -56,8 +46,9 @@ public class Player : ICombat
         {
             _maxHealth = _currentHealth;
         }
-        
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"{Name} healed for {healAmount} HP!\n" +
                           $"{Name} is now {_currentHealth} health.");
+        Console.ResetColor();
     }
 }

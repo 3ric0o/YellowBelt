@@ -1,38 +1,28 @@
 namespace Exam_Kata;
 
-public class Enemy : ICombat
+public class Enemy : Character, ICombat
 {
-    private readonly string _type;
-    private int _maxHealth;
-    private int _currentHealth;
+    public readonly string Type;
     
-    private int Damage {get;}
-    private int _expGive;
-    private int _goldGive;
-    
-    public bool IsAlive = true;
-    private readonly Random _random = new Random();
-    
-    
-    public Enemy(string type, int maxHealth, int damage, int expGive, int goldGive)
+    public Enemy(string type, int maxHealth, int damage, int exp, int gold) :
+        base( maxHealth, damage, exp, gold)
     {
-        _type = type;
-        _maxHealth = maxHealth;
-        _currentHealth = _maxHealth;
-        Damage = damage;
-        _expGive = expGive;
-        _goldGive = goldGive;
+        Type = type;
+        
     }
     
     public int DealDamage(string? playerName)
     {
         int damage = DamageCalculator();
-        Console.WriteLine($"{_type} attacks {playerName} for {damage} Damage!");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine($"{Type} attacks {playerName} for {damage} Damage!");
+        Console.ResetColor();
+        Thread.Sleep(1000);
         return damage;
     }
     public int DamageCalculator()
     {
-        return _random.Next(1, Damage+1);
+        return _random.Next(1, _damage+1);
     }
     public void TakeDamage(int damage)
     {
@@ -42,19 +32,11 @@ public class Enemy : ICombat
             _currentHealth = 0;
             IsAlive = false;
         }
-        Console.WriteLine($"Enemy {_type} takes {damage} Damage!\n" +
-                          $"{_type}'s current health: {_currentHealth}\n");
+
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine($"Enemy {Type} takes {damage} Damage!\n" +
+                          $"\n{Type}'s current health: {_currentHealth}\n");
+        Console.ResetColor();
     }
-    public void Heal()
-    {
-        int healAmount = _random.Next(1, _maxHealth);
-        _currentHealth += healAmount;
-        if (_currentHealth > _maxHealth)
-        {
-            _maxHealth = _currentHealth;
-        }
-        
-        Console.WriteLine($"{_type} healed for {healAmount} HP!\n" +
-                          $"{_type} is now {_currentHealth} health.");
-    }
+    
 }

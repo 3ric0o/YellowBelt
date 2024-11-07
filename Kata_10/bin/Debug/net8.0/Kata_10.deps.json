@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "True_Exam_Kata/1.0.0": {
+      "Kata_10/1.0.0": {
         "runtime": {
-          "True_Exam_Kata.dll": {}
+          "Kata_10.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "True_Exam_Kata/1.0.0": {
+    "Kata_10/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -8,7 +8,5 @@ public interface ICombat
     public int DamageCalculator();
 
     public void TakeDamage(int damage);
-
-    public void Heal();
-
+    
 }

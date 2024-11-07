@@ -3,7 +3,7 @@ namespace Exam_Kata;
     public abstract class GlobalGameMechanics
     {
         
-        public static string? PlayerNameInput()
+        public static string PlayerNameInput()
         {
             string? nameInput;
             while (true)
@@ -30,6 +30,7 @@ namespace Exam_Kata;
                 bool validInput = int.TryParse(Console.ReadLine(), out int optionInput);
                 if (validInput && optionInput is 1 or 2)
                 {
+                    Thread.Sleep(1000);
                     return optionInput;
                 }
 
@@ -39,11 +40,30 @@ namespace Exam_Kata;
         
         
         
-        public static void FightSequence(Player? player, Enemy enemy)
+        public static void FightSequence(Player player, Enemy enemy)
         {
-            player?.TakeDamage(enemy.DealDamage(player.Name));
+            player.TakeDamage(enemy.DealDamage(player.Name));
+            Thread.Sleep(1000);
+            
+            Console.WriteLine($"What will {player.Name} do?\n" +
+                              $"1. Attack\n" +
+                              $"2. Heal");
+            
+            int choice = PlayerInputChoice();
+            switch (choice)
+            {
+                case 1:
+                    enemy.TakeDamage(player.DealDamage(enemy.Type));
+                    Thread.Sleep(1000);
+                    break;
                 
+                case 2:
+                    player.Heal();
+                    break;
+            }
+            
         }
+        
         public static void GameOver(string? name)
         {
             Console.WriteLine($"{name} died! - GAME OVER!");

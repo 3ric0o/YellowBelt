@@ -1,8 +1,8 @@
 ﻿namespace Exam_Kata;
 
-class Program
+internal abstract class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         Game dungeonCrawler = new();
         dungeonCrawler.GameStart();

@@ -4,7 +4,7 @@ public class Game
 {
     private Player? _player;
     
-    private Enemy _shadowCreature = new Enemy("Shadow Creature",100,20,100,100);
+    private readonly Enemy _shadowCreature = new Enemy("Shadow Creature",50,20,100,100);
     
     public void GameStart()
     {
@@ -13,9 +13,8 @@ public class Game
         Console.WriteLine("What would you like to name your character?");
         
         string? playerName = GlobalGameMechanics.PlayerNameInput();
-        _player = new Player(playerName, 100, 1, 0, 0,20);
+        _player = new Player(playerName);
         PlayerPath(ChoosePath());
-
     }
     private int ChoosePath()
     {
@@ -42,6 +41,8 @@ public class Game
     }
     private void CavePathPart1()
     { 
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        
         Console.WriteLine("You step into the dark cave, its cool air sending a shiver down your spine.");
         Thread.Sleep(1000);
         Console.WriteLine("The light from the entrance fades quickly, and the only sounds are the distant drips of water and the echo of your footsteps.");
@@ -54,6 +55,9 @@ public class Game
         Thread.Sleep(1000);
         Console.WriteLine("A Shadow Creature attacks!\n");
         Thread.Sleep(1000);
+        
+        Console.ResetColor();
+        
         CavePathFight1();
 
         
@@ -93,7 +97,7 @@ public class Game
     }
     private void CavePathFight1()
     {
-        while(_player is { IsAlive: true } && _shadowCreature.IsAlive)
+        while (_player is { IsAlive: true } && _shadowCreature.IsAlive)
         {
             GlobalGameMechanics.FightSequence(_player, _shadowCreature);
         }
@@ -103,6 +107,8 @@ public class Game
         }
         if (!_shadowCreature.IsAlive)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
             Console.WriteLine("With a final strike, the creature crumbles into smoke.");
             Thread.Sleep(1000);
             Console.WriteLine("You breathe a sigh of relief, but you know this cave holds more dangers.");
@@ -111,6 +117,8 @@ public class Game
             Thread.Sleep(1000);
             Console.WriteLine("Inside, you find a Dagger of Shadows, a mysterious weapon that hums with power.");
             Thread.Sleep(1000);
+            
+            Console.ResetColor();
         }
     }
     private void MainRoadPath()
