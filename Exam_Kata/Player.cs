@@ -35,7 +35,7 @@ public class Player : Character, ICombat
         }
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine($"Player {Name} takes {damage} Damage!\n" +
-                          $"\n{Name}'s current health: {_currentHealth}\n");
+                          $"{Name}'s current health: {_currentHealth}\n");
         Console.ResetColor();
     }
     public void Heal()
@@ -50,5 +50,11 @@ public class Player : Character, ICombat
         Console.WriteLine($"{Name} healed for {healAmount} HP!\n" +
                           $"{Name} is now {_currentHealth} health.");
         Console.ResetColor();
+    }
+
+    public int Roll()
+    {
+        int diceRoll = _random.Next(1, 11);
+        return diceRoll;
     }
 }

@@ -59,17 +59,7 @@ public class Game
         Console.ResetColor();
         
         CavePathFight1();
-
         
-
-        // Item: Dagger of Shadows
-        Console.WriteLine("With the dagger in hand, you press on, feeling slightly more prepared for whatever lies ahead.");
-        Thread.Sleep(1000);
-        
-        Console.WriteLine("The ground beneath you suddenly gives way, and you fall into a deep pit!");
-        Thread.Sleep(1000);
-        Console.WriteLine("Bruised but alive, you search for a way out.");
-        Thread.Sleep(1000);
         
         // Challenge to escape the pit
         // Assume puzzle/escape code here...
@@ -95,6 +85,34 @@ public class Game
         Console.WriteLine("Congratulations, you’ve made it through the Cave Path!");
         
     }
+
+    private void CavePathPart2()
+    {
+        Console.WriteLine($"Will {_player.Name} try to open the chest?\n" +
+                          $"1. Open" +
+                          $"2. Leave");
+        int choice = GlobalGameMechanics.PlayerInputChoice();
+        switch (choice)
+        {
+            case 1:
+                if (_player.Roll() >= 6)
+                {
+                    Console.WriteLine("");
+                }
+                break;
+                
+            case 2:
+                
+                break;
+        }
+        
+        Console.WriteLine("With the dagger in hand, you press on, feeling slightly more prepared for whatever lies ahead.");
+        Thread.Sleep(1000);
+        Console.WriteLine("The ground beneath you suddenly gives way, and you fall into a deep pit!");
+        Thread.Sleep(1000);
+        Console.WriteLine("Bruised but alive, you search for a way out.");
+        Thread.Sleep(1000);
+    }
     private void CavePathFight1()
     {
         while (_player is { IsAlive: true } && _shadowCreature.IsAlive)
@@ -115,10 +133,8 @@ public class Game
             Thread.Sleep(1000);
             Console.WriteLine("Deeper into the cave, you discover a glimmering chest hidden in a crack in the rock.");
             Thread.Sleep(1000);
-            Console.WriteLine("Inside, you find a Dagger of Shadows, a mysterious weapon that hums with power.");
-            Thread.Sleep(1000);
-            
             Console.ResetColor();
+            
         }
     }
     private void MainRoadPath()

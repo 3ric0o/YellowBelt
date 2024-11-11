@@ -34,8 +34,7 @@ public class Enemy : Character, ICombat
         }
 
         Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine($"Enemy {Type} takes {damage} Damage!\n" +
-                          $"\n{Type}'s current health: {_currentHealth}\n");
+        Console.WriteLine($"Enemy {Type} takes {damage} Damage!\n");
         Console.ResetColor();
     }
     
