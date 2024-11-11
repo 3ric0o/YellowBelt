@@ -5,7 +5,7 @@ public class Enemy : Character, ICombat
     public readonly string Type;
     
     public Enemy(string type, int maxHealth, int damage, int exp, int gold) :
-        base( maxHealth, damage, exp, gold)
+        base(maxHealth, damage, exp, gold)
     {
         Type = type;
         
@@ -36,6 +36,16 @@ public class Enemy : Character, ICombat
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine($"Enemy {Type} takes {damage} Damage!\n");
         Console.ResetColor();
+    }
+
+    public int GiveExperience()
+    {
+        return _exp;
+    }
+
+    public int GiveGold()
+    {
+        return _gold;
     }
     
 }

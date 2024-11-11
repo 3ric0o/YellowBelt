@@ -4,7 +4,9 @@ public class Game
 {
     private Player? _player;
     
-    private readonly Enemy _shadowCreature = new Enemy("Shadow Creature",50,20,100,100);
+    private readonly Enemy _shadowCreature = new Enemy("Shadow Creature",5,20,1000,100);
+    private readonly Enemy _shadowCreature2 = new Enemy("Shadow Creature",50,20,100,100);
+    private readonly Enemy _caveGuardian = new Enemy("Cave Guardian",150,50,550,500);
     
     public void GameStart()
     {
@@ -35,14 +37,16 @@ public class Game
                 break;
 
             case 2:
-                MainRoadPath();
+                Console.WriteLine("Easy path is not done yet lol\n" +
+                                  "Gl in the Hard Path!");
+                CavePathPart1();
                 break;
         }
     }
+    
+    
     private void CavePathPart1()
     { 
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
-        
         Console.WriteLine("You step into the dark cave, its cool air sending a shiver down your spine.");
         Thread.Sleep(1000);
         Console.WriteLine("The light from the entrance fades quickly, and the only sounds are the distant drips of water and the echo of your footsteps.");
@@ -55,64 +59,44 @@ public class Game
         Thread.Sleep(1000);
         Console.WriteLine("A Shadow Creature attacks!\n");
         Thread.Sleep(1000);
-        
-        Console.ResetColor();
-        
         CavePathFight1();
-        
-        
-        // Challenge to escape the pit
-        // Assume puzzle/escape code here...
-        Console.WriteLine("After some effort, you climb out of the pit, your muscles sore but your resolve strong.");
-        Thread.Sleep(1000);
-        
-        Console.WriteLine("At last, you reach the cave's final chamber.");
-        Thread.Sleep(1000);
-        Console.WriteLine("A massive, scaled Cave Guardian blocks your path, its eyes glowing with ancient fury.");
-        Thread.Sleep(1000);
-        
-        // Combat with the Cave Guardian
-        // Assume combat or decision-making code here...
-        Console.WriteLine("With a mighty roar, the Guardian charges.");
-        Thread.Sleep(1000);
-        Console.WriteLine("The battle is fierce, but you manage to defeat the creature.");
-        Thread.Sleep(1000);
-        
-        Console.WriteLine("You emerge from the cave, battered but victorious, and step into the sunlight.");
-        Thread.Sleep(1000);
-        Console.WriteLine("The town is just ahead. You've survived the Cave Path!");
-        Thread.Sleep(1000);
-        Console.WriteLine("Congratulations, you’ve made it through the Cave Path!");
-        
     }
-
     private void CavePathPart2()
     {
-        Console.WriteLine($"Will {_player.Name} try to open the chest?\n" +
-                          $"1. Open" +
+        Console.WriteLine($"Will {_player?.Name} try to open the chest?\n" +
+                          $"1. Open\n" +
                           $"2. Leave");
         int choice = GlobalGameMechanics.PlayerInputChoice();
         switch (choice)
         {
             case 1:
-                if (_player.Roll() >= 6)
+                if (_player!.Roll() >= 5)
                 {
-                    Console.WriteLine("");
+                    Console.WriteLine("Inside, you find a Dagger of Shadows, a mysterious weapon that hums with power.");
+                    Console.WriteLine("With the dagger in hand, you press on, feeling slightly more prepared for whatever lies ahead.\n");
+                    Thread.Sleep(1500);
+                    Console.WriteLine("Damage increased by 20!\n");
+                    Thread.Sleep(1000);
+                    _player.BonusDamage = 20;
+                }
+                else
+                {
+                    CavePathFight2();
                 }
                 break;
                 
             case 2:
-                
                 break;
         }
         
-        Console.WriteLine("With the dagger in hand, you press on, feeling slightly more prepared for whatever lies ahead.");
-        Thread.Sleep(1000);
         Console.WriteLine("The ground beneath you suddenly gives way, and you fall into a deep pit!");
         Thread.Sleep(1000);
         Console.WriteLine("Bruised but alive, you search for a way out.");
         Thread.Sleep(1000);
+        CavePathFight3();
     }
+    
+    
     private void CavePathFight1()
     {
         while (_player is { IsAlive: true } && _shadowCreature.IsAlive)
@@ -125,18 +109,67 @@ public class Game
         }
         if (!_shadowCreature.IsAlive)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            GlobalGameMechanics.EnemyLoot(_player, _shadowCreature);
             
             Console.WriteLine("With a final strike, the creature crumbles into smoke.");
             Thread.Sleep(1000);
             Console.WriteLine("You breathe a sigh of relief, but you know this cave holds more dangers.");
             Thread.Sleep(1000);
-            Console.WriteLine("Deeper into the cave, you discover a glimmering chest hidden in a crack in the rock.");
+            Console.WriteLine("Deeper into the cave, you discover a glimmering chest hidden in a crack in the rock.\n");
             Thread.Sleep(1000);
-            Console.ResetColor();
+            CavePathPart2();
             
         }
     }
+    private void CavePathFight2()
+    {
+        Console.WriteLine("You destroyed the Chest and alerted a Shadow Creature\n" +
+                          "PREPARE TO FIGHT!");
+                    
+        while (_player is { IsAlive: true } && _shadowCreature2.IsAlive)
+        {
+            GlobalGameMechanics.FightSequence(_player, _shadowCreature2);
+        }
+        if (_player is { IsAlive: false })
+        {
+            GlobalGameMechanics.GameOver(_player.Name);
+        }
+                    
+        GlobalGameMechanics.EnemyLoot(_player, _shadowCreature2);
+    }
+    private void CavePathFight3()
+    {
+        Console.WriteLine("A massive, scaled Cave Guardian blocks your path, its eyes glowing with ancient fury.\n");
+        Thread.Sleep(1000);
+        while (_player is { IsAlive: true } && _caveGuardian.IsAlive)
+        {
+            GlobalGameMechanics.FightSequence(_player, _caveGuardian);
+        }
+        if (_player is { IsAlive: false })
+        {
+            GlobalGameMechanics.GameOver(_player.Name);
+        }
+
+        if (!_shadowCreature.IsAlive)
+        {
+            GlobalGameMechanics.EnemyLoot(_player, _caveGuardian);
+            Console.WriteLine("With a mighty roar, the Guardian charges.");
+            Thread.Sleep(1000);
+            Console.WriteLine("The battle is fierce, but you manage to defeat the creature.");
+            Thread.Sleep(1000);
+        
+            Console.WriteLine("You emerge from the cave, battered but victorious, and step into the sunlight.");
+            Thread.Sleep(1000);
+            Console.WriteLine("The town is just ahead. You've survived the Cave Path!");
+            Thread.Sleep(1000);
+            Console.WriteLine("Congratulations, you’ve made it through the Cave Path!");
+            Console.WriteLine("TO BE CONTINUED!");
+            
+        }
+
+    }
+    
+    
     private void MainRoadPath()
     {
         Console.WriteLine("You decide to take the longer, safer route along the main road. \n" +

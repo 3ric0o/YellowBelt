@@ -63,9 +63,17 @@ namespace Exam_Kata;
             }
             
         }
-        
         public static void GameOver(string? name)
         {
             Console.WriteLine($"{name} died! - GAME OVER!");
         }
+        public static void EnemyLoot(Player player, Enemy enemy)
+        {
+                Console.WriteLine($"{player.Name} gets {enemy.GiveExperience()} experience and {enemy.GiveGold()} gold.\n");
+                Thread.Sleep(1500);
+                player.GetExp(enemy.GiveExperience());
+                player.GetGold(enemy.GiveGold());
+            
+        }
+        
     }

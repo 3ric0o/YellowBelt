@@ -8,6 +8,9 @@ public abstract class Character
     protected int _exp;
     protected int _gold;
 
+    public int BonusDamage;
+    
+
     protected Random _random = new Random();
     public bool IsAlive = true;
 
