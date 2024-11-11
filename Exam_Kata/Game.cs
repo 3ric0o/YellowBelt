@@ -4,7 +4,7 @@ public class Game
 {
     private Player? _player;
     
-    private readonly Enemy _shadowCreature = new Enemy("Shadow Creature",5,20,1000,100);
+    private readonly Enemy _shadowCreature = new Enemy("Shadow Creature",75,20,100,100);
     private readonly Enemy _shadowCreature2 = new Enemy("Shadow Creature",50,20,100,100);
     private readonly Enemy _caveGuardian = new Enemy("Cave Guardian",150,50,550,500);
     
