@@ -11,7 +11,7 @@ public abstract class Character
     public int BonusDamage;
     
 
-    protected Random _random = new Random();
+    protected readonly Random Random = new Random();
     public bool IsAlive = true;
 
     protected Character(int maxHealth, int damage, int exp, int gold)

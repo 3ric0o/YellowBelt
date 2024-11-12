@@ -1,16 +1,10 @@
 namespace Exam_Kata;
 
-public class Enemy : Character, ICombat
+public class Enemy(string type, int maxHealth, int damage, int exp, int gold)
+    : Character(maxHealth, damage, exp, gold), ICombat
 {
-    public readonly string Type;
-    
-    public Enemy(string type, int maxHealth, int damage, int exp, int gold) :
-        base(maxHealth, damage, exp, gold)
-    {
-        Type = type;
-        
-    }
-    
+    public readonly string Type = type;
+
     public int DealDamage(string? playerName)
     {
         int damage = DamageCalculator();
@@ -22,7 +16,7 @@ public class Enemy : Character, ICombat
     }
     public int DamageCalculator()
     {
-        return _random.Next(1, _damage+1);
+        return Random.Next(1, _damage+1);
     }
     public void TakeDamage(int damage)
     {

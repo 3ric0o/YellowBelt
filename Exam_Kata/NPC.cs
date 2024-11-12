@@ -1,21 +1,14 @@
 namespace Exam_Kata;
 
-    public class NPC
+    public class NPC(string name, string dialogue = "Enjoy your stay in our town!")
     {
-        private string _name;
-        private string _dialogue;
-        
-        public NPC(string name, string dialogue = "Enjoy your stay in our town!")
-        {
-            _name = name;
-            _dialogue = dialogue;
-        }
+        private string _name = name;
 
-        
+
         public void Talk(Player player)
         {
             Console.WriteLine($"Welcome {player.Name}!\n" +
-                              $"{_dialogue}\n");
+                              $"{dialogue}\n");
         }
     }
 

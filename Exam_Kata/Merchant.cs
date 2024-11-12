@@ -3,21 +3,14 @@ using System.Collections.Generic;
 
 namespace Exam_Kata;
 
-    public class Merchant
+    public class Merchant(string name)
     {
-        private string _name;
-        private readonly List<Item> _inventory;
-
-
-        public Merchant(string name)
-        {
-            _name = name;
-            _inventory =
-            [
-                new Item("Potion", "Restores 50 HP.", 100),
-                new Item("Sword", "A sharp sword for combat (+20 damage).", 300)
-            ];
-        }
+        private string _name = name;
+        private readonly List<Item> _inventory =
+        [
+            new Item("Potion", "Restores 50 HP.", 100),
+            new Item("Sword", "A sharp sword for combat (+20 damage).", 300)
+        ];
 
 
         public void Talk(Player player)

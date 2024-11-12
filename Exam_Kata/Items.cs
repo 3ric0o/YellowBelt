@@ -1,15 +1,8 @@
 namespace Exam_Kata;
 
-    public class Item
+    public class Item(string name, string description, int price)
     {
-        public string Name { get; }
-        public string Description { get; }
-        public int Price { get; }
-
-        public Item(string name, string description, int price)
-        {
-            Name = name;
-            Description = description;
-            Price = price;
-        }
+        public string Name { get; } = name;
+        public string Description { get; } = description;
+        public int Price { get; } = price;
     }

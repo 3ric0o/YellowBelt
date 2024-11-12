@@ -1,19 +1,12 @@
 namespace Exam_Kata;
 
-public class Player : Character, ICombat
+public class Player(string name, int maxHealth = 100, int level = 1, int exp = 0, int gold = 0, int damage = 20)
+    : Character(maxHealth, damage, exp, gold), ICombat
 {
-    public string Name { get; }
-    private int _level;
+    public string Name { get; } = name;
+    private int _level = level;
     private readonly int _xpCap = 100;
-    private List<Item> Inventory { get; set; }
-
-    public Player(string name, int maxHealth = 100, int level = 1, int exp = 0, int gold = 0, int damage = 20) :
-        base(maxHealth, damage, exp, gold)
-    {
-        Name = name;
-        _level = level;
-        Inventory = new List<Item>();
-    }
+    private List<Item> Inventory { get; set; } = new();
 
     public int DealDamage(string? enemyType)
     {
@@ -26,7 +19,7 @@ public class Player : Character, ICombat
 
     public int DamageCalculator()
     {
-        return _random.Next(10, _damage + BonusDamage + 1);
+        return Random.Next(10, _damage + BonusDamage + 1);
     }
 
     public void TakeDamage(int damage)
@@ -46,7 +39,7 @@ public class Player : Character, ICombat
 
     public void Heal()
     {
-        int healAmount = _random.Next(1, _maxHealth);
+        int healAmount = Random.Next(1, _maxHealth);
         _currentHealth += healAmount;
         if (_currentHealth > _maxHealth)
         {
@@ -62,7 +55,7 @@ public class Player : Character, ICombat
 
     public int Roll()
     {
-        int diceRoll = _random.Next(1, 11);
+        int diceRoll = Random.Next(1, 11);
         return diceRoll;
     }
 
