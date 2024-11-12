@@ -7,6 +7,9 @@ public class Game
     private readonly Enemy _shadowCreature = new Enemy("Shadow Creature",75,20,100,100);
     private readonly Enemy _shadowCreature2 = new Enemy("Shadow Creature",50,20,100,100);
     private readonly Enemy _caveGuardian = new Enemy("Cave Guardian",150,50,550,500);
+
+    private readonly NPC _guard = new NPC("Guard");
+    private readonly Merchant _merchant = new Merchant("Merchant");
     
     public void GameStart()
     {
@@ -17,6 +20,7 @@ public class Game
         string? playerName = GlobalGameMechanics.PlayerNameInput();
         _player = new Player(playerName);
         PlayerPath(ChoosePath());
+        
     }
     private int ChoosePath()
     {
@@ -43,8 +47,6 @@ public class Game
                 break;
         }
     }
-    
-    
     private void CavePathPart1()
     { 
         Console.WriteLine("You step into the dark cave, its cool air sending a shiver down your spine.");
@@ -95,8 +97,6 @@ public class Game
         Thread.Sleep(1000);
         CavePathFight3();
     }
-    
-    
     private void CavePathFight1()
     {
         while (_player is { IsAlive: true } && _shadowCreature.IsAlive)
@@ -163,13 +163,31 @@ public class Game
             Console.WriteLine("The town is just ahead. You've survived the Cave Path!");
             Thread.Sleep(1000);
             Console.WriteLine("Congratulations, you’ve made it through the Cave Path!");
-            Console.WriteLine("TO BE CONTINUED!");
-            
+            EnterTown();
         }
-
     }
-    
-    
+    private void EnterTown()
+    {
+        Console.WriteLine("You entered the Town Area!\n" +
+                          "The town Guard is approaching you");
+        Thread.Sleep(1000);
+        _guard.Talk(_player);
+        Thread.Sleep(1000);
+        Console.WriteLine("You Greet the Guard and see a local merchant.");
+        Thread.Sleep(1000);
+        _merchant.Talk(_player);
+        int choice = _merchant.ShowInventory();
+        if (choice == 1)
+        {
+            Console.WriteLine("Which item would you like to buy?");
+            int itemIndex = GlobalGameMechanics.PlayerInputChoice() - 1;
+            _merchant.SellItem(_player, itemIndex);
+        }
+        else
+        {
+            Console.WriteLine("You chose not to buy anything.");
+        }
+    }
     private void MainRoadPath()
     {
         Console.WriteLine("You decide to take the longer, safer route along the main road. \n" +

@@ -2,15 +2,17 @@ namespace Exam_Kata;
 
 public class Player : Character, ICombat
 {
-    public string Name {get;}
+    public string Name { get; }
     private int _level;
     private readonly int _xpCap = 100;
-    
-    public Player(string name, int maxHealth = 100, int level = 1, int exp = 0, int gold = 0, int damage = 20) : 
+    private List<Item> Inventory { get; set; }
+
+    public Player(string name, int maxHealth = 100, int level = 1, int exp = 0, int gold = 0, int damage = 20) :
         base(maxHealth, damage, exp, gold)
     {
         Name = name;
         _level = level;
+        Inventory = new List<Item>();
     }
 
     public int DealDamage(string? enemyType)
@@ -21,10 +23,12 @@ public class Player : Character, ICombat
         Console.ResetColor();
         return damage;
     }
+
     public int DamageCalculator()
     {
         return _random.Next(10, _damage + BonusDamage + 1);
     }
+
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
@@ -33,11 +37,13 @@ public class Player : Character, ICombat
             _currentHealth = 0;
             IsAlive = false;
         }
+
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine($"Player {Name} takes {damage} Damage!\n" +
                           $"{Name}'s current health: {_currentHealth}\n");
         Console.ResetColor();
     }
+
     public void Heal()
     {
         int healAmount = _random.Next(1, _maxHealth);
@@ -45,13 +51,15 @@ public class Player : Character, ICombat
         if (_currentHealth > _maxHealth)
         {
             _currentHealth = _maxHealth;
-            
+
         }
+
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"{Name} healed for {healAmount} HP!\n" +
                           $"{Name} is now {_currentHealth} health.");
         Console.ResetColor();
     }
+
     public int Roll()
     {
         int diceRoll = _random.Next(1, 11);
@@ -67,6 +75,7 @@ public class Player : Character, ICombat
             LevelUp();
         }
     }
+
     public void GetGold(int gold)
     {
         _gold += gold;
@@ -78,9 +87,27 @@ public class Player : Character, ICombat
         _maxHealth += 25;
         _damage += 10;
         _currentHealth = _maxHealth;
-        
+
         Console.WriteLine($"Player {Name} is now {_level} Level!\n" +
                           $"--> {_maxHealth} HP\n" +
                           $"--> {_damage} Damage\n");
     }
+
+    public void AddItem(Item item)
+    {
+        Inventory.Add(item);
+        Console.WriteLine($"{item.Name} has been added to your inventory!");
+    }
+
+    public bool SpendGold(int amount)
+    {
+        if (_gold >= amount)
+        {
+            _gold -= amount;
+            return true;
+        }
+        Console.WriteLine("You don't have enough gold!");
+        return false;
+    }
 }
+
